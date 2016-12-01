@@ -10,7 +10,9 @@
 		"duration",
 		"testClassName",
 		"errors",
-		"failures" ],
+		"failures",
+		"systemErr",
+		"systemOut" ],
 	"name" : "XUnitTestCase",
 	"pools" : [
 		 ],

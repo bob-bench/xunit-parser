@@ -7,7 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		"parser",
-		"suite" ],
+		"suite",
+		"result" ],
 	"name" : "XUnitParser",
 	"pools" : [
 		 ],

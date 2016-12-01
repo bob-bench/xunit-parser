@@ -2,6 +2,9 @@ as yet unclassified
 testSimpleJunitXml
 	| res tests |
 	res := XUnitParser parse: self class simpleJunitXML readStream.
+	self assert: res class equals: OrderedCollection.
+	self assert: res size equals: 1.
+	res := res first.
 	self assert: res class equals: XUnitTestSuite.
 	self assert: res errors equals: 1.
 	self assert: res failures equals: 1.

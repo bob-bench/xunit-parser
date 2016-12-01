@@ -1,19 +1,15 @@
 as yet unclassified
 parseSuite
-	parser next.
-	parser isEndDocument ifTrue: [^nil].
-	(parser is: 'testsuite') ifFalse: [
-		^XUnitNoTestsuiteError signal: 'Unknown expected tag'].
 	suite := XUnitTestSuite new
-		duration: (parser at: 'time') asNumber asSeconds;
+		duration: (parser at: 'time' ifNone: 0) asNumber asSeconds;
 		failures: (parser at: 'failures') asInteger;
 		errors: (parser at: 'errors') asInteger;
 		suiteName: (parser at: 'name');
-		time: (DateAndTime readFrom: (parser at: 'timestamp') readStream);
 		testCount: (parser at: 'tests') asInteger;
 		yourself.
+	(parser at: 'timestamp' ifNone: nil) ifNotNil: [:time |
+		suite time: (DateAndTime readFrom: time readStream)].
 
-	parser next.
-	[ parser current isEndDocument ] whileFalse: [
+	[ parser next isEndTag: 'testsuite' ] whileFalse: [
 		self parseSuiteChild].
 	^suite

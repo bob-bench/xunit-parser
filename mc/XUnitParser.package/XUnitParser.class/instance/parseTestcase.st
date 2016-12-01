@@ -12,6 +12,14 @@ parseTestcase
 		yourself.
 	
 	[ parser next isEndTag: 'testcase' ] whileFalse: [
+	(parser is: 'system-err')
+		ifTrue: [
+			parser next.
+			testCase systemErr: parser consumeText].
+	(parser is: 'system-out')
+		ifTrue: [
+			parser next.
+			testCase systemOut: parser consumeText].
 		(parser isStartTag: 'error') ifTrue: [
 			| type |
 			type := parser at: 'type'.
