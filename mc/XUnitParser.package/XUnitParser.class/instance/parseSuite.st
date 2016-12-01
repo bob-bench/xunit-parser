@@ -10,6 +10,6 @@ parseSuite
 	(parser at: 'timestamp' ifNone: nil) ifNotNil: [:time |
 		suite time: (DateAndTime readFrom: time readStream)].
 
-	[ parser next isEndTag: 'testsuite' ] whileFalse: [
+	[ parser next xunitIsEndTag: 'testsuite' ] whileFalse: [
 		self parseSuiteChild].
 	^suite

@@ -11,7 +11,7 @@ parseTestcase
 		duration: (parser at: 'time') asNumber asSeconds;
 		yourself.
 	
-	[ parser next isEndTag: 'testcase' ] whileFalse: [
+	[ parser next xunitIsEndTag: 'testcase' ] whileFalse: [
 	(parser is: 'system-err')
 		ifTrue: [
 			parser next.
