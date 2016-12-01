@@ -1,0 +1,14 @@
+{
+	"category" : "XUnitParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "XUnitNoTestsuiteError",
+	"pools" : [
+		 ],
+	"super" : "Error",
+	"type" : "normal" }

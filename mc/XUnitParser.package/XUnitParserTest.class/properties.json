@@ -1,0 +1,14 @@
+{
+	"category" : "XUnitParser-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		 ],
+	"name" : "XUnitParserTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

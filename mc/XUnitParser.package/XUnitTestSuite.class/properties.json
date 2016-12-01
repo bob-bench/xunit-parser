@@ -1,0 +1,22 @@
+{
+	"category" : "XUnitParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"duration",
+		"failures",
+		"errors",
+		"suiteName",
+		"time",
+		"tests",
+		"testCount",
+		"systemOut",
+		"systemErr" ],
+	"name" : "XUnitTestSuite",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

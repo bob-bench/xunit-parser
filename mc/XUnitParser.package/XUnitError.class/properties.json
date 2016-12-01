@@ -1,0 +1,15 @@
+{
+	"category" : "XUnitParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"type",
+		"text" ],
+	"name" : "XUnitError",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
