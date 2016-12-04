@@ -3,10 +3,10 @@ baseline: spec
 	<baseline>
 	
 	spec for: #common do: [
-		spec project: 'XMLPullParser' with: [
+		spec project: 'XMLParserStAX' with: [
 				spec
-    					className: 'ConfigurationOfXMLPullParser';
-    					version: '1.6';
-    					repository: 'http://www.smalltalkhub.com/mc/hernan/XMLPullParser/main'].
-		spec package: 'XUnitParser' with: [spec requires: #('XMLPullParser') ]
+    					className: 'ConfigurationOfXMLParserStAX';
+    					version: '1.2.6';
+    					repository: 'http://www.smalltalkhub.com/mc/PharoExtras/XMLParserStAX/main'].
+		spec package: 'XUnitParser' with: [spec requires: #('XMLParserStAX') ]
 	]
