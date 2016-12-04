@@ -14,26 +14,16 @@ parseTestcase
 	
 	[ parser next xunitIsEndTag: 'testcase' ] whileFalse: [
 		current := parser current.
-		(current isStartTagNamed: 'system-err')
-			ifTrue: [
-				parser next.
-				testCase systemErr: parser current string.
-				parser next].
-		(current isStartTagNamed: 'system-out')
-			ifTrue: [
-				parser next.
-				testCase systemOut: parser current string.
-				parser next].
+		(current isStartTagNamed: 'system-err') ifTrue: [
+				testCase systemErr: self textUntilEnd].
+		(current isStartTagNamed: 'system-out') ifTrue: [
+				testCase systemOut: self textUntilEnd].
 		(current isStartTagNamed: 'error') ifTrue: [
 			| type |
 			type := current attributeAt: 'type'.
-			parser next.
-			testCase addError: type text: parser current string.
-			parser next].
+			testCase addError: type text: self textUntilEnd].
 		(current isStartTagNamed: 'failure') ifTrue: [
 			| type |
 			type := current attributeAt: 'type'.
-			parser next.
-			testCase addFailure: type text: parser current string.
-			parser next]].
+			testCase addFailure: type text: self textUntilEnd]].
 	suite addTestCase: testCase.

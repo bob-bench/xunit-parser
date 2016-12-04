@@ -6,10 +6,8 @@ parseSuiteChild
 		ifTrue: [^self parseTestcase].
 	(parser current isStartTagNamed: 'system-out')
 		ifTrue: [
-			suite systemOut: parser next string.
-			parser next].
+			suite systemOut: self textUntilEnd].
 	(parser current isStartTagNamed: 'system-err')
 		ifTrue: [
-			suite systemErr: parser next string.
-			parser next].
+			suite systemErr: self textUntilEnd].
 	"Unknown.. just continue. Maybe parse until the end tag of it?"
