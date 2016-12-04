@@ -12,7 +12,7 @@ testSimpleJunitXml
 	self assert: res testCount equals: 3.
 	self assert: res duration equals: 0.069 asSeconds.
 	self assert: res time equals: (DateAndTime year: 2009 month: 12 day: 19 hour: 17 minute: 58 second: 59).
-	self assert: res systemOut asByteArray hex equals: '686572650d'.
+	self assert: res systemOut asByteArray hex equals: '686572650a'.
 	self assert: res systemErr asByteArray hex equals: ''.
 
 	tests := res tests.
@@ -23,7 +23,7 @@ testSimpleJunitXml
 	self assert: tests first hasError.
 	self assert: tests first errors size equals: 1.
 	self assert: tests first errors first type equals: 'java.lang.RuntimeException'.
-	self assert: tests first errors first text asByteArray hex equals: '6a6176612e6c616e672e52756e74696d65457863657074696f6e0d0961742074657374732e41546573742e6572726f722841546573742e6a6176613a3131290d'.
+	self assert: tests first errors first text asByteArray hex equals: '6a6176612e6c616e672e52756e74696d65457863657074696f6e0a0961742074657374732e41546573742e6572726f722841546573742e6a6176613a3131290a'.
 	self deny: tests first hasFailure.
 	
 	self deny: tests second hasError.

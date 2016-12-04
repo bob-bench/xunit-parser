@@ -20,7 +20,7 @@ testSimpleTestSuitesXml
 	self assert: tests first testClassName equals: 'some.class.name'.
 	self assert: tests first duration equals: 123.345000 asSeconds.
 	self assert: tests first testName equals: 'Test1'.
-	self assert: tests first systemErr asByteArray hex equals: '4920616d20737464657272210d202020202020202020202020'.
-	self assert: tests first systemOut asByteArray hex equals: '4920616d207374646f7574210d202020202020202020202020'.
+	self assert: tests first systemErr asByteArray hex equals: '0a202020202020202020202020202020204920616d20737464657272210a202020202020202020202020'.
+	self assert: tests first systemOut asByteArray hex equals: '0a202020202020202020202020202020204920616d207374646f7574210a202020202020202020202020'.
 	self deny: tests first hasError.
 	self deny: tests first hasFailure.

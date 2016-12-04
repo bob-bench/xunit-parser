@@ -1,6 +1,8 @@
 as yet unclassified
 parseSuites
 	[ parser next xunitIsEndTag: 'testsuites' ] whileFalse: [
-		(parser is: 'testsuite')
+		| current |
+		current := parser current.
+		(current isStartTagNamed: 'testsuite')
 			ifTrue: [ result add: self parseSuite ]
-			ifFalse: [XUnitNoTestsuiteError signal: parser current tag]].
+			ifFalse: [current isTag ifTrue: [XUnitNoTestsuiteError signal: parser current localName]]].

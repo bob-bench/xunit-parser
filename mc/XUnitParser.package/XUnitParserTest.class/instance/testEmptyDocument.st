@@ -1,5 +1,3 @@
 as yet unclassified
 testEmptyDocument
-	| res |
-	res := XUnitParser parse: ''.
-	self assert: res isEmpty.
+	self should: [XUnitParser parse: ''] raise: XMLWellFormednessException.

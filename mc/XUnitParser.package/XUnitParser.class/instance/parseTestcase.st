@@ -1,33 +1,39 @@
 as yet unclassified
 parseTestcase
-	| testCase |
+	| current testCase |
 
-	(parser isStartTag: 'testcase')
+	current := parser current.
+	(current isStartTagNamed: 'testcase')
 		ifFalse: [^self error: 'Invalid state' ].
 
 	testCase := XUnitTestCase new
-		testClassName: (parser at: 'classname');
-		testName: (parser at: 'name');
-		duration: (parser at: 'time') asNumber asSeconds;
+		testClassName: (current attributeAt: 'classname');
+		testName: (current attributeAt: 'name');
+		duration: (current attributeAt: 'time') asNumber asSeconds;
 		yourself.
 	
 	[ parser next xunitIsEndTag: 'testcase' ] whileFalse: [
-	(parser is: 'system-err')
-		ifTrue: [
-			parser next.
-			testCase systemErr: parser consumeText].
-	(parser is: 'system-out')
-		ifTrue: [
-			parser next.
-			testCase systemOut: parser consumeText].
-		(parser isStartTag: 'error') ifTrue: [
+		current := parser current.
+		(current isStartTagNamed: 'system-err')
+			ifTrue: [
+				parser next.
+				testCase systemErr: parser current string.
+				parser next].
+		(current isStartTagNamed: 'system-out')
+			ifTrue: [
+				parser next.
+				testCase systemOut: parser current string.
+				parser next].
+		(current isStartTagNamed: 'error') ifTrue: [
 			| type |
-			type := parser at: 'type'.
+			type := current attributeAt: 'type'.
 			parser next.
-			testCase addError: type text: parser consumeText].
-		(parser isStartTag: 'failure') ifTrue: [
+			testCase addError: type text: parser current string.
+			parser next].
+		(current isStartTagNamed: 'failure') ifTrue: [
 			| type |
-			type := parser at: 'type'.
+			type := current attributeAt: 'type'.
 			parser next.
-			testCase addFailure: type text: parser consumeText]].
+			testCase addFailure: type text: parser current string.
+			parser next]].
 	suite addTestCase: testCase.

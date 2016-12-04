@@ -1,12 +1,12 @@
 as yet unclassified
 parse: aReadStream
-	parser := XMLPullParser parse: aReadStream.
+	parser := StAXParser new on: aReadStream.
 	result := OrderedCollection new.
 	[ parser next isEndDocument ] whileFalse: [
-		(parser is: 'testsuites')
+		(parser current isStartTagNamed: 'testsuites')
 			ifTrue: [self parseSuites]
 			ifFalse: [
-				(parser is: 'testsuite')
+				(parser current isStartTagNamed: 'testsuite')
 					ifTrue: [result add: self parseSuite]
-					ifFalse: [XUnitNoTestsuiteError signal: parser current tag]]].
+					ifFalse: [parser current isTag ifTrue: [XUnitNoTestsuiteError signal: parser current localName]]]].
 	^result

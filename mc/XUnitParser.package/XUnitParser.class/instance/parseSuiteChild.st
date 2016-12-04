@@ -1,14 +1,15 @@
 as yet unclassified
 parseSuiteChild
-	(parser is: 'testcase')
+	parser isText ifTrue: [^self].
+
+	(parser current isStartTagNamed: 'testcase')
 		ifTrue: [^self parseTestcase].
-	(parser is: 'system-out')
+	(parser current isStartTagNamed: 'system-out')
 		ifTrue: [
-			parser next.
-			^suite systemOut: parser consumeText].
-	(parser is: 'system-err')
+			suite systemOut: parser next string.
+			parser next].
+	(parser current isStartTagNamed: 'system-err')
 		ifTrue: [
-			parser next.
-			^suite systemErr: parser consumeText].
+			suite systemErr: parser next string.
+			parser next].
 	"Unknown.. just continue. Maybe parse until the end tag of it?"
-	^parser next.
