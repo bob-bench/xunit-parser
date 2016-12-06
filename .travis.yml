@@ -4,6 +4,8 @@ sudo: required
 os:
 - linux
 
+install:
+ - pip install benchupload
 
 smalltalk:
 - Pharo-5.0
@@ -11,3 +13,9 @@ smalltalk:
 
 script:
 - $SMALLTALK_CI_HOME/run.sh
+
+after_success:
+ - benchupload --dir=$SMALLTALK_CI_HOME
+
+after_failure:
+  - benchupload --dir=$SMALLTALK_CI_HOME
