@@ -1,0 +1,14 @@
+{
+	"category" : "XUnitParser",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "XUnitConverter",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
