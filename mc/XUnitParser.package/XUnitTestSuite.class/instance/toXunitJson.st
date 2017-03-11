@@ -9,5 +9,5 @@ toXunitJson
 		at: 'suiteName' put: suiteName;
 		at: 'systemErr' put: systemErr;
 		at: 'systemOut' put: systemOut;
-		at: 'tests' put: (tests collect: [:each | each toXunitJson]);
+		at: 'tests' put: (self tests collect: [:each | each toXunitJson]);
 		yourself.

@@ -1,3 +1,3 @@
 as yet unclassified
 tests
-	^ tests
+	^ tests ifNil: [ tests := OrderedCollection new]
